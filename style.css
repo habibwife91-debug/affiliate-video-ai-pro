@@ -1,0 +1,184 @@
+Fail 3: style.css
+
+/* ==========================================================================
+   1. TETAPAN ASAS & RESET
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0f0e0c;
+    color: #d3d3d3;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease;
+}
+
+/* ==========================================================================
+   2. CUSTOM SCROLLBAR (BAR TATALAN PREMIUM)
+   ========================================================================== */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #0f0e0c;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #2a251f;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #d4af37;
+}
+
+/* ==========================================================================
+   3. ANIMASI & KESAN CAHAYA (GLOW EFFECTS)
+   ========================================================================== */
+@keyframes goldPulse {
+    0%, 100% { 
+        opacity: 0.15; 
+    }
+    50% { 
+        opacity: 0.45; 
+    }
+}
+
+.gold-glow {
+    animation: goldPulse 4s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   4. LAYOUT SIDEBAR & NAVIGASI
+   ========================================================================== */
+aside {
+    transition: all 0.3s ease;
+}
+
+aside nav button {
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+aside nav button:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   5. UTILITI KUSTOM (TAB & INTERAKTIF)
+   ========================================================================== */
+.hidden {
+    display: none !important;
+}
+
+#timeSelector button {
+    transition: all 0.2s ease;
+}
+
+#dropZone {
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#dropZone:hover {
+    background-color: rgba(212, 175, 55, 0.05);
+}
+
+/* ==========================================================================
+   6. GRID OUTPUT & KAD VIDEO VARIATION
+   ========================================================================== */
+#videoGrid .group {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#videoGrid .group:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.05);
+}
+
+.aspect-video {
+    aspect-ratio: 16 / 9;
+}
+
+/* ==========================================================================
+   7. MODAL OVERLAY & PROCESSING BAR
+   ========================================================================== */
+#processingModal {
+    backdrop-filter: blur(8px);
+}
+
+#progressBar {
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   8. SISTEM GERBANG PEMBAYARAN MOCKUP
+   ========================================================================== */
+#tab-billing-content .cursor-pointer {
+    transition: all 0.2s ease;
+}
+
+#tab-billing-content .cursor-pointer:hover {
+    border-color: #d4af37;
+    background-color: rgba(212, 175, 55, 0.02);
+    transform: scale(1.02);
+}
+
+/* ==========================================================================
+   9. RESPONSIVE MEDIA QUERIES (TELEFON PINTAR)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .flex-shrink-0 {
+        width: 100% !important;
+    }
+    
+    .flex {
+        flex-direction: column;
+    }
+    
+    aside {
+        width: 100% !important;
+        height: auto !important;
+        border-right: none;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+    
+    aside nav {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 8px;
+        gap: 8px;
+    }
+    
+    aside nav button {
+        white-space: nowrap;
+        padding: 8px 16px;
+    }
+    
+    main {
+        height: calc(100vh - 180px);
+        padding: 16px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    #previewContainer {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
