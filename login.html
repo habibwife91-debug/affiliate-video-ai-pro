@@ -1,0 +1,98 @@
+Fail 1: login.html (Halaman Masuk Akaun Baru)
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Video AI PRO - Log Masuk</title>
+    <script src="https://tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0f0e0c] text-gray-200 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-[#161412] p-8 rounded-2xl border border-[#d4af37]/20 shadow-2xl w-full max-w-md relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-48 h-48 bg-[#d4af37]/10 rounded-full blur-3xl"></div>
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/30 mb-3">
+                <i class="fa-solid fa-circle-play text-[#d4af37] text-3xl"></i>
+            </div>
+            <h1 class="text-2xl font-bold tracking-wider text-white">AFFILIATE VIDEO <span class="text-[#d4af37]">AI PRO</span></h1>
+            <p class="text-xs text-gray-400 mt-1">Platform Automasi Video Iklan Generatif GPU</p>
+        </div>
+        <div id="loginFormContainer">
+            <h2 class="text-lg font-semibold text-white mb-4">Log Masuk Akaun</h2>
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Alamat Emel</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="email" id="loginEmail" placeholder="admin@websitebaru.com" required class="w-full bg-[#1e1b18] border border-gray-700 rounded-lg pl-10 pr-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#d4af37] transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Kata Laluan</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required class="w-full bg-[#1e1b18] border border-gray-700 rounded-lg pl-10 pr-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#d4af37] transition">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-[#b38f2d] to-[#d4af37] text-black font-bold py-2.5 rounded-lg text-sm transition transform active:scale-95 shadow-lg shadow-[#d4af37]/10">Log Masuk</button>
+            </form>
+            <p class="text-xs text-center text-gray-400 mt-6">Belum mempunyai akaun? <button onclick="toggleAuth(true)" class="text-[#d4af37] font-semibold">Daftar Sekarang</button></p>
+        </div>
+        <div id="registerFormContainer" class="hidden">
+            <h2 class="text-lg font-semibold text-white mb-4">Daftar Akaun Baru</h2>
+            <form id="registerForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Nama Penuh</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500"><i class="fa-solid fa-user"></i></span>
+                        <input type="text" id="regName" placeholder="Nama Anda" required class="w-full bg-[#1e1b18] border border-gray-700 rounded-lg pl-10 pr-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#d4af37] transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Alamat Emel</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="email" id="regEmail" placeholder="contoh@emel.com" required class="w-full bg-[#1e1b18] border border-gray-700 rounded-lg pl-10 pr-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#d4af37] transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Kata Laluan Baru</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" id="regPassword" placeholder="Minimum 6 aksara" required class="w-full bg-[#1e1b18] border border-gray-700 rounded-lg pl-10 pr-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#d4af37] transition">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-[#b38f2d] to-[#d4af37] text-black font-bold py-2.5 rounded-lg text-sm transition transform active:scale-95 shadow-lg shadow-[#d4af37]/10">Sahkan Pendaftaran</button>
+            </form>
+            <p class="text-xs text-center text-gray-400 mt-6">Sudah mempunyai akaun? <button onclick="toggleAuth(false)" class="text-[#d4af37] font-semibold">Log Masuk</button></p>
+        </div>
+        <div id="authMessage" class="mt-4 text-center text-xs font-medium hidden"></div>
+    </div>
+    <script>
+        function toggleAuth(showRegister) {
+            const loginBox = document.getElementById('loginFormContainer');
+            const registerBox = document.getElementById('registerFormContainer');
+            document.getElementById('authMessage').classList.add('hidden');
+            if(showRegister) { loginBox.classList.add('hidden'); registerBox.classList.remove('hidden'); }
+            else { registerBox.classList.add('hidden'); loginBox.classList.remove('hidden'); }
+        }
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const msg = document.getElementById('authMessage');
+            msg.className = "mt-4 text-center text-xs font-medium text-green-400 block";
+            msg.innerText = "Mengesahkan kredensial... Sila tunggu.";
+            setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+        });
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const msg = document.getElementById('authMessage');
+            msg.className = "mt-4 text-center text-xs font-medium text-green-400 block";
+            msg.innerText = "Akaun berjaya dicipta! Mengalihkan ke Dashboard...";
+            setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+        });
+    </script>
+</body>
+</html>
